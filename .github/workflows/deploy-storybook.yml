@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - "main" # change to the branch you wish to deploy from
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "checkout@v3"
+      uses: actions/checkout@v3
+
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18' # Adjust as needed for your project
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Storybook
+      run: npm run build-storybook
+
+    - name: Upload
+      uses: actions/upload-pages-artifact@v2
+      with: 
+        path: storybook-static
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v3
+      with:
+        token: ${{ github.token }}
