@@ -19,27 +19,3 @@ jobs:
       with:
         path: storybook-static
         build_command: npm run build-storybook
-  # build-and-deploy:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-
-  #     - name: Use Node.js 18
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '18.13.0'
-
-  #     - name: Install dependencies
-  #       run: npm install  # Basic install
-
-  #     - name: Build Storybook
-  #       run: npm run build-storybook  # Adjust command if needed
-
-  #     - name: Deploy to GitHub Pages
-  #       uses: bitovi/github-actions-storybook-to-github-pages@v1.0.0
-  #       with:
-  #         path: ./storybook-static  # Update path if Storybook builds to a different directory
-
-  #     - name: Deploy succeeded!
-  #       if: always()  # Always run this step, regardless of success/failure
-  #       run: echo "Storybook deployed!"
